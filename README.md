@@ -28,6 +28,10 @@ Totally inspired by http://www.somerandomdude.com/2012/08/12/svg-css-injection/.
     <i class="icon-user" data-fill="#00AEEC"></i>
     <i class="icon-user" data-fill="random"></i>
 
+### Example Screenshot
+
+![Fillerup Screenshot](http://f.cl.ly/items/1A3T0C1k0F1G2x361W1m/Screen%20Shot%202013-04-01%20at%2010.43.28%20AM.png)
+
 ## Downsides
 
 1. Only tried it on a few SVGs
