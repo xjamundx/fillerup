@@ -1,3 +1,5 @@
+(function() {
+
 function fillerup() {
     var els = document.querySelectorAll('[data-fill]');
     var i = 0;
@@ -10,14 +12,16 @@ function fillerup() {
 function fill(el) {
     var fill = el.getAttribute('data-fill');
     fill = fill === 'random' ? '#' + Math.floor(Math.random()*16777215).toString(16) : fill;
-    var style = window.getComputedStyle(el);
+    var style = getComputedStyle(el);
     var uri = style.backgroundImage;
     var svg64 = uri.replace(/^.+base64,/, "").replace(/\"?\)$/, "")
-    var xml = window.atob(svg64);
+    var xml = atob(svg64);
     var color = xml.replace(/fill="#[A-Za-z0-9]+"/, 'fill="' + fill + '"');
-    var color64 = window.btoa(color);
+    var color64 = btoa(color);
     var colorUri = "url('data:image/svg+xml;base64," + color64 + "')";
     el.style.backgroundImage = colorUri;
 }
 
 fillerup();
+
+}());
