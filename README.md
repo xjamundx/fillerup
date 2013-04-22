@@ -3,6 +3,8 @@
 
 Totally inspired by http://www.somerandomdude.com/2012/08/12/svg-css-injection/.
 
+
+
 ## Works Like This
 
 1. Add `<script src="fillerup.js"></script>` to the bottom of your page
@@ -10,6 +12,8 @@ Totally inspired by http://www.somerandomdude.com/2012/08/12/svg-css-injection/.
 1. Add the attribute `data-fill` with a new fill color.
 
 ## Example
+
+[Live demo](http://xjamundx.github.io/fillerup/)
 
     <style>
     .icon-user {
