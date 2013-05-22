@@ -3,18 +3,33 @@ function fillerup() {
     var i = 0;
     var len = els.length;
     for (i = 0; i < len; i++) {
-        fill(els[i])
+        fillSVG(els[i]);
     }
 }
 
-function fill(el) {
+function fillSVG(el) {
     var fill = el.getAttribute('data-fill');
     fill = fill === 'random' ? '#' + Math.floor(Math.random()*16777215).toString(16) : fill;
     var style = window.getComputedStyle(el);
     var uri = style.backgroundImage;
-    var svg64 = uri.replace(/^.+base64,/, "").replace(/\"?\)$/, "")
+    var svg64 = uri.replace(/^.+base64,/, '').replace(/\"?\)$/, '');
     var xml = window.atob(svg64);
-    var color = xml.replace(/fill="#[A-Za-z0-9]+"/, 'fill="' + fill + '"');
+
+    var m = xml.match(/fill="/);
+    var color;
+    if(m&&m.length) {
+        color = xml.replace(/fill="#[A-Za-z0-9]+"/, 'fill="' + fill + '"');
+    } else {
+        var parser = new DOMParser();
+        var svgXML = parser.parseFromString( xml, 'text/xml' );
+        var children = svgXML.childNodes;
+        for(var i=0; i<children.length; i++) {
+            if(children[i].nodeType===1) {
+                children[i].setAttribute('fill',fill);
+            }
+        }
+        color = (new XMLSerializer()).serializeToString(svgXML);
+    }
     var color64 = window.btoa(color);
     var colorUri = "url('data:image/svg+xml;base64," + color64 + "')";
     el.style.backgroundImage = colorUri;
