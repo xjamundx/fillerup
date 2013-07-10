@@ -41,3 +41,10 @@ Totally inspired by http://www.somerandomdude.com/2012/08/12/svg-css-injection/.
 1. Only tried it on a few SVGs
 1. Currently only works with base64d SVGs
 1. Will do weird things if you have multiple `<path>` elements with individual `fill` attributes.
+
+## Todos
+
+1. Possible support for hover states, etc.
+1. More optimizations
+1. require.js support?
+1. support for common svg libraries?
